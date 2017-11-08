@@ -3,15 +3,42 @@ import java.util.Scanner;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 	
-		Scanner userInput = new Scanner(System.in);	
 		
-		System.out.println("Which table do you want?");
-		int timetable = userInput.nextInt();
+		try {
+			Scanner userInput = new Scanner(System.in);	
+			
+			System.out.println("Which table do you want?");
+			int timetable = userInput.nextInt();
+			
+			TimeTable  myTimeTable = new TimeTable(timetable); 
+		
+			if (timetable<=10) {
+				
+				int cont=0;
+				for (int  value : myTimeTable.multiplicationTableArrayList()) {
+					
+					System.out.println(timetable+" x "+cont+" = "+value);
+					cont++;	
+				}  
 
+			}else {
+					throw new Exception("Number is too big");
+			}
+			
+			
+			
 	 
-		TimeTable  myTimeTable = new TimeTable(timetable); 
+			
+		} catch (Exception e) {
+			System.out.println("Error: "+e.getMessage());
+		}
+		
+		
+		
+	 
+		
 		
 	/*	for (String x:myTimeTable.multiplicationTableArray()){
 			
@@ -20,12 +47,7 @@ public class Main {
 			
 		}*/
 		
-		int cont=0;
-		for (int  value : myTimeTable.multiplicationTableArrayList()) {
-			
-			System.out.println(timetable+" x "+cont+" = "+value);
-			cont++;
-		}
+	
 	}
 
 }
